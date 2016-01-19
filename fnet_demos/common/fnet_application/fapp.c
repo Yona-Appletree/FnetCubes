@@ -886,7 +886,7 @@ void fapp_go_cmd ( fnet_shell_desc_t desc, fnet_index_t argc, fnet_char_t **argv
 #if FAPP_CFG_GO_CMD || FAPP_CFG_BOOTLOADER || FAPP_CFG_SETGET_CMD_BOOT
 static void fapp_go ( fnet_shell_desc_t desc, fnet_uint32_t address )
 {
-    if((fapp_params_boot_config.go_address == 0u) || (*(fnet_uint32_t*)address == 0xffffffffu))
+    if((*(fnet_uint32_t*)address == 0) || (*(fnet_uint32_t*)address == 0xffffffffu))
     {
         fnet_printf("\nThere is no code on user application startup vector.\n");
     }
