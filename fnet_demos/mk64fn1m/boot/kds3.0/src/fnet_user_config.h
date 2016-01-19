@@ -36,7 +36,7 @@
 * At runtime it can be changed by the fnet_netif_set_address() or 
 * by the DHCP client service.
 ******************************************************************************/
-#define FNET_CFG_ETH0_IP4_ADDR      (FNET_IP4_ADDR_INIT(10, 0, 77, 25))
+#define FNET_CFG_ETH0_IP4_ADDR      (FNET_IP4_ADDR_INIT(0, 0, 0, 0))
 
 /*****************************************************************************
 * IP Subnet mask for the Ethernet interface. 
