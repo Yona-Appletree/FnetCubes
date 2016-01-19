@@ -83,7 +83,7 @@
 
 /* Remote TFTP Server Address.*/
 #if FNET_CFG_IP4
-    #define FAPP_CFG_PARAMS_TFTP_SERVER {AF_INET, 0, 0, {10, 200, 1, 2}}
+    #define FAPP_CFG_PARAMS_TFTP_SERVER {AF_INET, 0, 0, {10, 0, 77, 238}}
 #else /* FNET_CFG_IP6 */
     #define FAPP_CFG_PARAMS_TFTP_SERVER {AF_INET6, 0, 0, {0xfe,0x80,0,0,0,0,0,0,0xa0,0x9a,0x5,0x30,0xab,0xf7,0xa8,0xfd}}
 #endif

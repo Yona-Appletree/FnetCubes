@@ -370,6 +370,8 @@ DefaultISR:
     .set  \handler_name, DefaultISR
     .endm
 
+	.set I2C0_IRQHandler, i2c_isr
+	.set I2C1_IRQHandler, i2c_isr
 /* Exception Handlers */
     def_irq_handler    NMI_Handler
     def_irq_handler    HardFault_Handler
@@ -404,8 +406,8 @@ DefaultISR:
     def_irq_handler    LLWU_IRQHandler
     def_irq_handler    WDOG_EWM_IRQHandler
     def_irq_handler    RNG_IRQHandler
-    def_irq_handler    I2C0_IRQHandler
-    def_irq_handler    I2C1_IRQHandler
+    //def_irq_handler    I2C0_IRQHandler
+    //def_irq_handler    I2C1_IRQHandler
     def_irq_handler    SPI0_IRQHandler
     def_irq_handler    SPI1_IRQHandler
     def_irq_handler    I2S0_Tx_IRQHandler

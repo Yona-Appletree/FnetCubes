@@ -124,7 +124,7 @@ const fnet_char_t FAPP_COMMAND_RELEASE [] = "release";
 /************************************************************************
 *     Function Prototypes
 *************************************************************************/
-static void fapp_init(void);
+void fapp_init(void);
 void fapp_shell_init(fnet_shell_desc_t desc);
 #if FAPP_CFG_BOOTLOADER || FAPP_CFG_SETGET_CMD_BOOT
 static void fapp_boot_mode_go(fnet_shell_desc_t desc);
@@ -495,7 +495,7 @@ static void fapp_dup_ip_handler( fnet_netif_desc_t netif )
 *
 * DESCRIPTION: FNET Application initialization.
 ************************************************************************/
-static void fapp_init(void)
+void fapp_init(void)
 {
     static fnet_uint8_t         stack_heap[FNET_CFG_HEAP_SIZE];
     struct fnet_init_params     init_params;

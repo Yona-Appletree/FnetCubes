@@ -39,6 +39,9 @@
 extern "C" {
 #endif
 
+
+void fapp_init(void);
+
 /**************************************************************************/ /*!
  * @def FAPP_VERSION
  * @brief Current version number of the FNET Demoi Application.
