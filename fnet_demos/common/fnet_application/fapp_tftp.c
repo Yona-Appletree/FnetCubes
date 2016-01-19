@@ -1127,7 +1127,8 @@ static fnet_int32_t fapp_tftp_handler (fnet_tftp_request_t request_type, fnet_ui
     ERROR:    
         fnet_shell_println(desc, FAPP_TFTP_ERR, data_size, data_ptr );  
         fnet_shell_unblock(desc);           /* Unblock shell. */
-        fnet_shell_script_release(desc);    /* Clear script. */    
+        // YONA: Do _not_ clear the script; allow additional commands to execute. (e.g. boot from existing image)
+        //fnet_shell_script_release(desc);    /* Clear script. */
         result_local = FNET_ERR;
     }
     
