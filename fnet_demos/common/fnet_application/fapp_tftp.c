@@ -1178,7 +1178,7 @@ void fapp_tftp_cmd( fnet_shell_desc_t desc, fnet_index_t argc, fnet_char_t ** ar
     fnet_memcpy(&tftp_params.server_addr, &fapp_params_tftp_config.server_addr, sizeof(tftp_params.server_addr));
     
     tftp_params.handler_param = (void *)desc;
-    tftp_params.timeout = 0u; /* Default timeout. */
+    tftp_params.timeout = 1u; /* 1s timeout. */
     
     /* Reset fapp_tftp_handler_control. */
     fnet_memset_zero(&fapp_tftp_handler_control, sizeof(fapp_tftp_handler_control));
