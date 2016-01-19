@@ -20,6 +20,8 @@
 /* Enable startup boot mode. */
 #define FAPP_CFG_BOOTLOADER             (1)
 
+#define FAPP_CFG_PARAMS_BOOT_DELAY		(0)
+
 #define FAPP_CFG_PREINSTALL_INTERRUPTS  (1)
 
 /*  "dhcp" command.*/
@@ -77,16 +79,16 @@
 #define FAPP_CFG_CFM_PROTECTION         (1)
 
 /* Default parameters values*/
-#define FAPP_CFG_PARAMS_TFTP_FILE_NAME "shell_boot_intflash.elf.S19"
+#define FAPP_CFG_PARAMS_TFTP_FILE_NAME  "shell_boot_intflash.elf.S19"
 
 /* Remote TFTP Server Address.*/
 #if FNET_CFG_IP4
-    #define FAPP_CFG_PARAMS_TFTP_SERVER     {AF_INET, 0, 0, {10, 0, 77, 238}}
+    #define FAPP_CFG_PARAMS_TFTP_SERVER {AF_INET, 0, 0, {10, 200, 1, 2}}
 #else /* FNET_CFG_IP6 */
-    #define FAPP_CFG_PARAMS_TFTP_SERVER     {AF_INET6, 0, 0, {0xfe,0x80,0,0,0,0,0,0,0xa0,0x9a,0x5,0x30,0xab,0xf7,0xa8,0xfd}}
+    #define FAPP_CFG_PARAMS_TFTP_SERVER {AF_INET6, 0, 0, {0xfe,0x80,0,0,0,0,0,0,0xa0,0x9a,0x5,0x30,0xab,0xf7,0xa8,0xfd}}
 #endif
 #define FAPP_CFG_PARAMS_BOOT_MODE       FAPP_PARAMS_BOOT_MODE_SCRIPT
-#define FAPP_CFG_PARAMS_BOOT_SCRIPT     "dhcp; erase all; tftp; set boot go; go"
+#define FAPP_CFG_PARAMS_BOOT_SCRIPT     "dhcp; set go 0xc411; tftp; go"
 
 /* Script on TFTP server "WRITE request" received.*/
 #define FAPP_CFG_TFTPS_ON_WRITE_REQUEST_SCRIPT      "erase all"
