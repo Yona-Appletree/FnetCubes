@@ -1092,6 +1092,11 @@ static fnet_int32_t fapp_tftp_handler (fnet_tftp_request_t request_type, fnet_ui
         /* -- FNET_TFTP_REQUEST_READ -- */
         if(request_type == FNET_TFTP_REQUEST_READ)
         {
+        	// YONA: Clear flash right before uploading
+        	if (fapp_tftp_handler_control.image_size == 0 && data_size > 0) {
+        		fapp_mem_erase_all(desc);
+        	}
+
             result_local = fapp_tftp_handler_control.current_type->rx_handler(&fapp_tftp_handler_control,desc, data_ptr, data_size);
         }
         /* -- FNET_TFTP_REQUEST_WRITE -- */
