@@ -59,7 +59,11 @@ extern volatile I2C_Channel i2c_channels[I2C_NUMBER_OF_DEVICES];
   to the PORT module that has the pins used for I2C, 3) configure the PORT PCR registers so that I2C function is
   selected and the pins are set to open drain.
 */
-uint32_t i2c_init(uint8_t i2c_number, uint8_t mult, uint8_t icr);
+uint32_t i2c_init(
+	uint8_t i2c_number,
+	uint8_t mult,
+	uint8_t icr
+);
 
 
 /*
@@ -77,13 +81,19 @@ uint32_t i2c_init(uint8_t i2c_number, uint8_t mult, uint8_t icr);
   the absolute minimum possible (such as enqueue an event to be processed later, set a flag, exit sleep mode, etc.)
   user_data is a pointer that will be passed to the callback_fn.
 */
-int32_t i2c_send_sequence(uint32_t channel_number, uint16_t *sequence, uint32_t sequence_length, uint8_t *received_data,
-						  void (*callback_fn)(void*), void *user_data);
+int32_t i2c_send_sequence(
+	uint32_t channel_number,
+	uint16_t *sequence,
+	uint32_t sequence_length,
+	uint8_t *received_data,
+	void (*callback_fn)(void*),
+	void *user_data
+);
 
 /* Set all I2C interrupt handlers to this function. */
 void i2c_isr(void);
 
-#define I2C_RESTART 1<<8
-#define I2C_READ    2<<8
+#define I2C_RESTART (1<<8)
+#define I2C_READ    (2<<8)
 
 #endif /* I2C_H */

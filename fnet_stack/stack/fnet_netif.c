@@ -38,6 +38,7 @@
 #include "fnet_loop.h"
 #include "fnet_nd6.h"
 #include "fnet_ip6_prv.h"
+#include "flash_mac_addr.h"
 
 
 #if FNET_CFG_NETIF_IP6_ADDR_MAX < 2u 
@@ -88,10 +89,16 @@ fnet_return_t fnet_netif_init_all( void )
 #if FNET_CFG_CPU_ETH0  
     /* Initialise eth0 interface.*/
     {
-    	fnet_mac_addr_t macaddr = {0x00,0x11,0x22,0x33,0x44,0x55};
-   
+    	fnet_mac_addr_t macaddr = { 0x00, 0x11, 0x22, 0x33, 0x44, 0x55 };
+
         /* Set MAC Address.*/
 	    fnet_str_to_mac(FNET_CFG_CPU_ETH0_MAC_ADDR, macaddr);
+
+	    /* Use flash-loaded MAC address if present */
+    	if (flash_mac_addr_loaded) {
+    		memcpy(&macaddr, &flash_mac_addr, sizeof(macaddr));
+    	}
+
         result = fnet_netif_init((fnet_netif_t *)FNET_ETH0_IF, macaddr, sizeof(fnet_mac_addr_t));
         if(result == FNET_ERR)
         {
